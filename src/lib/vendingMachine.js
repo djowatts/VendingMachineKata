@@ -8,18 +8,19 @@ function VendingMachine(){
 
 VendingMachine.prototype.GetStatus = function(){
 	var returnValue = this.status
-	if (this.status != 'INSERT COIN' && this.currentValue === 0){
+	if (this.currentValue === 0){
 		this.status = 'INSERT COIN'
 	}
 	else {
-		this.status = '$' + (this.currentValue/100)
+		this.status = '$' + (this.currentValue/100).toFixed(2)
 	}
+
 	return returnValue
 }
 
 VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 	if (coinSize === 'nickelCoinSize' && coinWeight === 'nickelCoinWeight'){
-		this.currentValue += 5
+		this.currentValue += 5		
 	}
 	else if (coinSize === 'dimeCoinSize' && coinWeight === 'dimeCoinWeight'){
 		this.currentValue += 10
@@ -29,7 +30,9 @@ VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 	}
 	else{
 		this.returnedCoins.push({coinSize, coinWeight})
-	}	
+	}
+
+	this.status = '$' + (this.currentValue/100).toFixed(2)	
 }
 
 VendingMachine.prototype.GetReturnedCoins = function(){
@@ -41,7 +44,7 @@ VendingMachine.prototype.GetCurrentValue = function(){
 }
 
 VendingMachine.prototype.SelectProduct = function(productName){
-	this.status = '$1.00'
+	this.status = 'PRICE $1.00'
 }
 
 module.exports = VendingMachine
