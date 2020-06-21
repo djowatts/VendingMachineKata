@@ -15,10 +15,11 @@ const acceptedCoins = {
 		}
 	}
 
-function VendingMachine(){
+function VendingMachine(canDispenseChange){
 	this.returnedCoins = []
 	this.currentValue = 0
-	this.status = 'INSERT COIN'
+	this.canDispenseChange = canDispenseChange
+	this.status = canDispenseChange ? 'INSERT COIN' : 'EXACT CHANGE ONLY'
 	this.dispensedProducts = []
 	this.stockedProducts = {
 		"chips": {
@@ -45,7 +46,7 @@ function VendingMachine(){
 VendingMachine.prototype.GetStatus = function(){
 	var returnValue = this.status
 	if (this.currentValue === 0){
-		this.status = 'INSERT COIN'
+		this.status = this.canDispenseChange ? 'INSERT COIN' : 'EXACT CHANGE ONLY'
 	}
 	else {
 		this.status = '$' + (this.currentValue/100).toFixed(2)

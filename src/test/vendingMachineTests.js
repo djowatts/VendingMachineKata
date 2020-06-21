@@ -3,14 +3,14 @@ var VendingMachine = require('../lib/vendingMachine')
 
 describe('vendingMachineTests', function(done){
 	it ('should display INSERT COIN when no coins have been inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'INSERT COIN', 'The status was as expected')
 		done()
 	})
 
 	it ('should reject invalid coins', function (done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('invalidCoinSize', 'invalidCoinWeight')
 		var returnedCoins = vendingMachine['GetReturnedCoins']()
 		assert(returnedCoins.length === 1, "The coin was returned")
@@ -18,7 +18,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should accept a nickel and leave coin return empty', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')
 		var returnedCoins = vendingMachine['GetReturnedCoins']()
 		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
@@ -26,7 +26,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should increase current value by 5 cents when a nickel inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')
 		var currentValue = vendingMachine['GetCurrentValue']()
 		assert(currentValue === 5)
@@ -34,7 +34,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display 5 cents in dollars when a nickel is inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')
 		var status = vendingMachine['GetStatus']()
 		assert(status === '$0.05')
@@ -42,7 +42,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should accept a dime and leave coin return empty', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
 		var returnedCoins = vendingMachine['GetReturnedCoins']()
 		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
@@ -50,7 +50,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should increase current value by 10 cents when a nickel inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
 		var currentValue = vendingMachine['GetCurrentValue']()
 		assert(currentValue === 10)
@@ -58,7 +58,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display 10 cents in dollars when a dime is inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
 		var status = vendingMachine['GetStatus']()
 		assert(status === '$0.10')
@@ -66,7 +66,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should accept a quarter and leave coin return empty', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		var returnedCoins = vendingMachine['GetReturnedCoins']()
 		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
@@ -74,7 +74,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should increase current value by 25 cents when a quarter inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		var currentValue = vendingMachine['GetCurrentValue']()
 		assert(currentValue === 25)
@@ -82,7 +82,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display 25 cents in dollars when a quarter is inserted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		var status = vendingMachine['GetStatus']()
 		assert(status === '$0.25')
@@ -90,7 +90,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display the price in dollars when cola is selected and there isnt enought funds', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'PRICE $1.00')
@@ -98,7 +98,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display the price in dollars when chips is selected and there isnt enought funds', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['SelectProduct']('chips') 
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'PRICE $0.50')
@@ -106,7 +106,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display the price in dollars when candy is selected and there isnt enought funds', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['SelectProduct']('candy') 
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'PRICE $0.65')
@@ -114,7 +114,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display INSERT COIN when status checked and no coins inserted after a product check', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
 		var status = vendingMachine['GetStatus']()
@@ -123,7 +123,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display current balance in dollars when status checked and coins have been insterted', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
@@ -133,7 +133,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should dispense the product if the correct value has been inserted for cola', function (done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
@@ -159,7 +159,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should dispense the product if the correct value has been inserted for chips', function (done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['SelectProduct']('chips')
@@ -170,7 +170,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display thankyou after a product has been dispensed', function (done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
@@ -184,7 +184,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should return the correct change to thec oin return after a product is selected and the current balance is greater than the cost', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
@@ -199,7 +199,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should return the correct change to thec oin return after a product is selected and the current balance is greater than the cost when buying candy', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
@@ -208,7 +208,6 @@ describe('vendingMachineTests', function(done){
 		vendingMachine['SelectProduct']('candy')
 
 		var returnedCoins = vendingMachine['GetReturnedCoins']()
-		console.log(returnedCoins)
 		assert(returnedCoins[1] === "quarter")
 		assert(returnedCoins[0] === "dime")
 
@@ -216,7 +215,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display SOLD OUT if there is no stock left for a product', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
@@ -240,7 +239,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display remaining value when sold out after the display refreshes from displaying the sold out status', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
@@ -265,7 +264,7 @@ describe('vendingMachineTests', function(done){
 	})
 
 	it ('should display INSERT COIN  when sold out after the display refreshes from displaying the sold out status and there is no money in the machine', function(done){
-		var vendingMachine = new VendingMachine()
+		var vendingMachine = new VendingMachine(true)
 
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
