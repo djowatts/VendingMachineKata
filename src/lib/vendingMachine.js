@@ -122,8 +122,6 @@ VendingMachine.prototype.GetDispensedProducts = function(){
 var calculateChange = function(priceOfProduct, currentValue){
 	var amountToReturn = currentValue - priceOfProduct
 
-	console.log("Calculating change for amount" + amountToReturn)
-
 	var coinsToReturn = []
 
 	while (amountToReturn > 0){

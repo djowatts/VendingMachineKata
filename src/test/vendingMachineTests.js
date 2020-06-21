@@ -263,4 +263,23 @@ describe('vendingMachineTests', function(done){
 		assert(status === "$0.65")
 		done()
 	})
+
+	it ('should display INSERT COIN  when sold out after the display refreshes from displaying the sold out status and there is no money in the machine', function(done){
+		var vendingMachine = new VendingMachine()
+
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')	
+
+		vendingMachine['SelectProduct']('candy')
+
+		vendingMachine['SelectProduct']('candy')
+
+		var status = vendingMachine['GetStatus']()
+		status = vendingMachine['GetStatus']()
+		
+		assert(status === "INSERT COIN")
+		done()
+	})
 })
