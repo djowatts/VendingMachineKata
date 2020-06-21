@@ -9,7 +9,12 @@ VendingMachine.prototype.GetStatus = function(){
 }
 
 VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
-	this.returnedCoins.push({coinSize, coinWeight})
+	if (coinSize === 'nickelCoinSize' && coinWeight === 'nickelCoinWeight'){
+
+	}
+	else{
+		this.returnedCoins.push({coinSize, coinWeight})
+	}	
 }
 
 VendingMachine.prototype.GetReturnedCoins = function(){
