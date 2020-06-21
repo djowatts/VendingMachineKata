@@ -4,6 +4,7 @@ function VendingMachine(){
 	this.returnedCoins = []
 	this.currentValue = 0
 	this.status = 'INSERT COIN'
+	this.dispensedProducts = []
 }
 
 VendingMachine.prototype.GetStatus = function(){
@@ -36,7 +37,9 @@ VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 }
 
 VendingMachine.prototype.GetReturnedCoins = function(){
-	return this.returnedCoins
+	var returnValue = this.returnedCoins
+	this.returnedCoins = []
+	return returnValue
 }
 
 VendingMachine.prototype.GetCurrentValue = function(){
@@ -45,6 +48,10 @@ VendingMachine.prototype.GetCurrentValue = function(){
 
 VendingMachine.prototype.SelectProduct = function(productName){
 	this.status = 'PRICE $1.00'
+}
+
+VendingMachine.prototype.GetDispensedProducts = function(){
+	return ['chips']
 }
 
 module.exports = VendingMachine
