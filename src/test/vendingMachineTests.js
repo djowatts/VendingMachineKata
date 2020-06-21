@@ -72,4 +72,13 @@ describe('vendingMachineTests', function(done){
 		assert(status === '$1.00')
 		done()
 	})
+
+	it ('should display INSERT COIN when status checked and no coins inserted after a product check', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['SelectProduct']('chips') 
+		var status = vendingMachine['GetStatus']()
+		var status = vendingMachine['GetStatus']()
+		assert(status === 'INSERT COIN')
+		done()
+	})
 })
