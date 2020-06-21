@@ -128,4 +128,18 @@ describe('vendingMachineTests', function(done){
 		assert(dispensedProducts[0] === 'chips')
 		done()
 	})
+
+	it ('should display thankyou after a product has been dispensed', function (done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['SelectProduct']('chips')
+		var dispensedProducts = vendingMachine['GetDispensedProducts']()		
+		assert(dispensedProducts.length === 1)
+		var status = vendingMachine['GetStatus']()
+		assert(status === 'THANK YOU')
+		done()
+	})
 })
