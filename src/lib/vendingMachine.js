@@ -51,6 +51,7 @@ VendingMachine.prototype.SelectProduct = function(productName){
 }
 
 VendingMachine.prototype.GetDispensedProducts = function(){
+	this.status = 'THANK YOU'	
 	return ['chips']
 }
 
