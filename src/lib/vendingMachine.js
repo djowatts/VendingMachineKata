@@ -11,10 +11,10 @@ VendingMachine.prototype.GetStatus = function(){
 
 VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 	if (coinSize === 'nickelCoinSize' && coinWeight === 'nickelCoinWeight'){
-
+		this.currentValue += 5
 	}
 	else if (coinSize === 'dimeCoinSize' && coinWeight === 'dimeCoinWeight'){
-
+		this.currentValue += 10
 	}
 	else{
 		this.returnedCoins.push({coinSize, coinWeight})
@@ -26,7 +26,7 @@ VendingMachine.prototype.GetReturnedCoins = function(){
 }
 
 VendingMachine.prototype.GetCurrentValue = function(){
-	return 5
+	return this.currentValue
 }
 
 module.exports = VendingMachine
