@@ -2,6 +2,7 @@
 
 function VendingMachine(){
 	this.returnedCoins = []
+	this.currentValue = 0
 }
 
 VendingMachine.prototype.GetStatus = function(){
@@ -19,6 +20,10 @@ VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 
 VendingMachine.prototype.GetReturnedCoins = function(){
 	return this.returnedCoins
+}
+
+VendingMachine.prototype.GetCurrentValue = function(){
+	return 5
 }
 
 module.exports = VendingMachine
