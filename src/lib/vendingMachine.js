@@ -47,7 +47,12 @@ VendingMachine.prototype.GetCurrentValue = function(){
 }
 
 VendingMachine.prototype.SelectProduct = function(productName){
-	this.status = 'PRICE $1.00'
+	if (productName === 'chips'){
+		this.status = 'PRICE $0.50'
+	}
+	else{
+		this.status = 'PRICE $1.00'
+	}
 }
 
 VendingMachine.prototype.GetDispensedProducts = function(){
