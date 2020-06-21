@@ -64,4 +64,11 @@ describe('vendingMachineTests', function(done){
 		assert(currentValue === 25)
 		done()
 	})
+
+	it ('should display the price in dollars when chips are selected and there isnt enought funds', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['SelectProduct']('chips') 
+		var status = vendingMachine['GetStatus']()
+		assert(status === '$1.00')
+	})
 })
