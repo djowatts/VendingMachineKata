@@ -13,6 +13,10 @@ function VendingMachine(){
 		"cola": {
 			price: 100,
 			display: 'PRICE $1.00'
+		},
+		"candy": {
+			price: 65,
+			display: 'PRICE $0.65'
 		}
 	}
 }
