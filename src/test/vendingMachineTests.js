@@ -81,4 +81,14 @@ describe('vendingMachineTests', function(done){
 		assert(status === 'INSERT COIN')
 		done()
 	})
+
+	it ('should display current balance in dollars when status checked and coins have been insterted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['SelectProduct']('chips') 
+		var status = vendingMachine['GetStatus']()
+		var status = vendingMachine['GetStatus']()
+		assert(status === '$0.25')
+		done()
+	})
 })
