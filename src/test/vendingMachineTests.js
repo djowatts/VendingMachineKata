@@ -89,9 +89,9 @@ describe('vendingMachineTests', function(done){
 		done()
 	})
 
-	it ('should display the price in dollars when chips are selected and there isnt enought funds', function(done){
+	it ('should display the price in dollars when cola is selected and there isnt enought funds', function(done){
 		var vendingMachine = new VendingMachine()
-		vendingMachine['SelectProduct']('chips') 
+		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'PRICE $1.00')
 		done()
@@ -99,7 +99,7 @@ describe('vendingMachineTests', function(done){
 
 	it ('should display INSERT COIN when status checked and no coins inserted after a product check', function(done){
 		var vendingMachine = new VendingMachine()
-		vendingMachine['SelectProduct']('chips') 
+		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
 		var status = vendingMachine['GetStatus']()
 		assert(status === 'INSERT COIN')
@@ -109,23 +109,23 @@ describe('vendingMachineTests', function(done){
 	it ('should display current balance in dollars when status checked and coins have been insterted', function(done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
-		vendingMachine['SelectProduct']('chips') 
+		vendingMachine['SelectProduct']('cola') 
 		var status = vendingMachine['GetStatus']()
 		var status = vendingMachine['GetStatus']()
 		assert(status === '$0.25')
 		done()
 	})
 
-	it ('should dispense the product if the correct value has been inserted for chips', function (done){
+	it ('should dispense the product if the correct value has been inserted for cola', function (done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
-		vendingMachine['SelectProduct']('chips')
+		vendingMachine['SelectProduct']('cola')
 		var dispensedProducts = vendingMachine['GetDispensedProducts']()		
 		assert(dispensedProducts.length === 1)
-		assert(dispensedProducts[0] === 'chips')
+		assert(dispensedProducts[0] === 'cola')
 		done()
 	})
 
@@ -135,7 +135,7 @@ describe('vendingMachineTests', function(done){
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
-		vendingMachine['SelectProduct']('chips')
+		vendingMachine['SelectProduct']('cola')
 		var dispensedProducts = vendingMachine['GetDispensedProducts']()		
 		assert(dispensedProducts.length === 1)
 		var status = vendingMachine['GetStatus']()
