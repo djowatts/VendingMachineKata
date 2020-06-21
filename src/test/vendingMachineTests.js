@@ -282,4 +282,11 @@ describe('vendingMachineTests', function(done){
 		assert(status === "INSERT COIN")
 		done()
 	})
+
+	it ('should display EXACT CHANGE ONLY instead of INSERT COIN when unable to dispense change', function(done){
+		var vendingMachine = new VendingMachine(false)
+		var status = vendingMachine['GetStatus']()
+		assert(status === 'EXACT CHANGE ONLY', 'The status was as expected')
+		done()
+	})
 })
