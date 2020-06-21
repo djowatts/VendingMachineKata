@@ -3,10 +3,11 @@
 function VendingMachine(){
 	this.returnedCoins = []
 	this.currentValue = 0
+	this.status = 'INSERT COIN'
 }
 
 VendingMachine.prototype.GetStatus = function(){
-	return 'INSERT COIN'
+	return this.status
 }
 
 VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
@@ -30,6 +31,10 @@ VendingMachine.prototype.GetReturnedCoins = function(){
 
 VendingMachine.prototype.GetCurrentValue = function(){
 	return this.currentValue
+}
+
+VendingMachine.prototype.SelectProduct = function(productName){
+	this.status = '$1.00'
 }
 
 module.exports = VendingMachine

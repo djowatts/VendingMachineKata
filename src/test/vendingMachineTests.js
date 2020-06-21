@@ -70,5 +70,6 @@ describe('vendingMachineTests', function(done){
 		vendingMachine['SelectProduct']('chips') 
 		var status = vendingMachine['GetStatus']()
 		assert(status === '$1.00')
+		done()
 	})
 })
