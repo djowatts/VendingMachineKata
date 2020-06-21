@@ -182,4 +182,19 @@ describe('vendingMachineTests', function(done){
 		assert(status === 'THANK YOU')
 		done()
 	})
+
+	it ('should return the correct change to thec oin return after a product is selected and the current balance is greater than the cost', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+
+		vendingMachine['SelectProduct']('chips')
+
+		var returnedCoins = vendingMachine['GetReturnedCoins']()
+
+		assert(returnedCoins[0] === "quarter")
+
+		done()
+	})
 })
