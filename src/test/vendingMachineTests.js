@@ -61,7 +61,7 @@ describe('vendingMachineTests', function(done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		var currentValue = vendingMachine['GetCurrentValue']()
-		assert(currentValue === 10)
+		assert(currentValue === 25)
 		done()
 	})
 })
