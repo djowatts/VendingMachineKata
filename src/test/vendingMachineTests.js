@@ -115,4 +115,16 @@ describe('vendingMachineTests', function(done){
 		assert(status === '$0.25')
 		done()
 	})
+
+	it ('should dispense the product if the correct value has been inserted for chips', function (done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['SelectProduct']('chips')
+		var dispensedProducts = vendingMachine['GetDispensedProducts']()
+		assert(dispensedProducts.length === 1)
+		assert(dispensedProducts.includes('chips'))
+	})
 })
