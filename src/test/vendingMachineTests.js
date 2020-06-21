@@ -105,6 +105,14 @@ describe('vendingMachineTests', function(done){
 		done()
 	})
 
+	it ('should display the price in dollars when candy is selected and there isnt enought funds', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['SelectProduct']('candy') 
+		var status = vendingMachine['GetStatus']()
+		assert(status === 'PRICE $0.65')
+		done()
+	})
+
 	it ('should display INSERT COIN when status checked and no coins inserted after a product check', function(done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['SelectProduct']('cola') 
