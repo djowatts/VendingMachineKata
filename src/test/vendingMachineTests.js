@@ -48,4 +48,20 @@ describe('vendingMachineTests', function(done){
 		assert(currentValue === 10)
 		done()
 	})
+
+	it ('should accept a quarter and leave coin return empty', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		var returnedCoins = vendingMachine['GetReturnedCoins']()
+		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
+		done()
+	})
+
+	it ('should increase current value by 25 cents when a quarter inserted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		var currentValue = vendingMachine['GetCurrentValue']()
+		assert(currentValue === 10)
+		done()
+	})
 })
