@@ -7,7 +7,11 @@ function VendingMachine(){
 }
 
 VendingMachine.prototype.GetStatus = function(){
-	return this.status
+	var returnValue = this.status
+	if (this.status != 'INSERT COIN'){
+		this.status = 'INSERT COIN'
+	}
+	return returnValue
 }
 
 VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
