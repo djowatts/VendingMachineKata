@@ -258,11 +258,9 @@ describe('vendingMachineTests', function(done){
 		vendingMachine['SelectProduct']('candy')
 
 		var status = vendingMachine['GetStatus']()
-		var status = vendingMachine['GetStatus']()
-
+		status = vendingMachine['GetStatus']()
+		
 		assert(status === "$0.65")
-		done()
-
 		done()
 	})
 })

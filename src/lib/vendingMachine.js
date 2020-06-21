@@ -90,20 +90,22 @@ VendingMachine.prototype.SelectProduct = function(productName){
 
 	if (this.currentValue >= product.price){
 		if (product.quantity === 0){
-			this.status = 'SOLD OUT'
-			return
+			this.status = 'SOLD OUT'			
 		}
+		else{
+			this.dispensedProducts.push(product.name)
+			product.quantity--
+			this.stockedProducts[productName] = product
+			this.status = 'THANK YOU'
 
-		this.dispensedProducts.push(product.name)
-		product.quantity--
-		this.stockedProducts[productName] = product
-		this.status = 'THANK YOU'
+			var change = calculateChange(product.price, this.currentValue)
 
-		var change = calculateChange(product.price, this.currentValue)
+			for (var i = change.length - 1; i >= 0; i--) {
+				this.returnedCoins.push(change[i])
+			}	
 
-		for (var i = change.length - 1; i >= 0; i--) {
-			this.returnedCoins.push(change[i])
-		}		
+			this.currentValue = 0
+		}	
 				
 	}
 	else{
@@ -118,8 +120,6 @@ VendingMachine.prototype.GetDispensedProducts = function(){
 }
 
 var calculateChange = function(priceOfProduct, currentValue){
-	console.log(priceOfProduct + 'product price')
-	console.log(currentValue + 'current balance')
 	var amountToReturn = currentValue - priceOfProduct
 
 	console.log("Calculating change for amount" + amountToReturn)
@@ -143,7 +143,6 @@ var calculateChange = function(priceOfProduct, currentValue){
 		amountToReturn = amountToReturn - lastValue
 		coinsToReturn.push(coinToReturn)
 	}
-	console.log('RETURNING COINS')
 	return coinsToReturn
 }
 
