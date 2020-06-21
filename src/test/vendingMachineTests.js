@@ -8,4 +8,12 @@ describe('vendingMachineTests', function(done){
 		assert(status === 'INSERT COIN', 'The status was as expected')
 		done()
 	})
+
+	it ('should reject invalid coins', function (done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('invalidCoinSize', 'invalidCoinWeight')
+		var returnedCoins = vendingMachine['GetReturnedCoins']()
+		assert(returnedCoins.length === 1, "The coin was returned")
+		done()
+	})
 })
