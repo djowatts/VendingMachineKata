@@ -33,6 +33,14 @@ describe('vendingMachineTests', function(done){
 		done()
 	})
 
+	it ('should display 5 cents in dollars when a nickel is inserted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')
+		var status = vendingMachine['GetStatus']()
+		assert(status === '$0.05')
+		done()
+	})
+
 	it ('should accept a dime and leave coin return empty', function(done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
@@ -49,6 +57,14 @@ describe('vendingMachineTests', function(done){
 		done()
 	})
 
+	it ('should display 10 cents in dollars when a dime is inserted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		var status = vendingMachine['GetStatus']()
+		assert(status === '$0.10')
+		done()
+	})
+
 	it ('should accept a quarter and leave coin return empty', function(done){
 		var vendingMachine = new VendingMachine()
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
@@ -62,6 +78,14 @@ describe('vendingMachineTests', function(done){
 		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
 		var currentValue = vendingMachine['GetCurrentValue']()
 		assert(currentValue === 25)
+		done()
+	})
+
+	it ('should display 25 cents in dollars when a quarter is inserted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		var status = vendingMachine['GetStatus']()
+		assert(status === '$0.25')
 		done()
 	})
 
