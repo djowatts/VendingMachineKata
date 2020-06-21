@@ -17,7 +17,7 @@ VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 		this.currentValue += 10
 	}
 	else if (coinSize === 'quarterCoinSize' && coinWeight === 'quarterCoinWeight'){
-		this.currentValue += 10
+		this.currentValue += 25
 	}
 	else{
 		this.returnedCoins.push({coinSize, coinWeight})
