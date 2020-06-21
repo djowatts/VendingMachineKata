@@ -24,4 +24,12 @@ describe('vendingMachineTests', function(done){
 		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
 		done()
 	})
+
+	it ('should increase current value by 5 cents when a nickel inserted', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')
+		var currentValue = vendingMachine['GetCurrentValue']()
+		assert(currentValue === 5)
+		done()
+	})
 })
