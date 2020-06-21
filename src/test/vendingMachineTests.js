@@ -32,4 +32,12 @@ describe('vendingMachineTests', function(done){
 		assert(currentValue === 5)
 		done()
 	})
+
+	it ('should accept a dime and leave coin return empty', function(done){
+		var vendingMachine = new VendingMachine()
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		var returnedCoins = vendingMachine['GetReturnedCoins']()
+		assert(returnedCoins.length === 0, "The coin was accepted and the return is empty")
+		done()
+	})
 })
