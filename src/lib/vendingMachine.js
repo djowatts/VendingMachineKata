@@ -5,6 +5,16 @@ function VendingMachine(){
 	this.currentValue = 0
 	this.status = 'INSERT COIN'
 	this.dispensedProducts = []
+	this.stockedProducts = {
+		"chips": {
+			price: 50,
+			display: 'PRICE $0.50'
+		},
+		"cola": {
+			price: 100,
+			display: 'PRICE $1.00'
+		}
+	}
 }
 
 VendingMachine.prototype.GetStatus = function(){
@@ -47,12 +57,10 @@ VendingMachine.prototype.GetCurrentValue = function(){
 }
 
 VendingMachine.prototype.SelectProduct = function(productName){
-	if (productName === 'chips'){
-		this.status = 'PRICE $0.50'
-	}
-	else{
-		this.status = 'PRICE $1.00'
-	}
+	
+	var product = this.stockedProducts[productName]
+
+	this.status = product.display
 }
 
 VendingMachine.prototype.GetDispensedProducts = function(){
