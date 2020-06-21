@@ -93,9 +93,7 @@ VendingMachine.prototype.SelectProduct = function(productName){
 
 		for (var i = change.length - 1; i >= 0; i--) {
 			this.returnedCoins.push(change[i])
-		}
-
-		this.returnedCoins.push(change)
+		}		
 		
 	}
 	else{
