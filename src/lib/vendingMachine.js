@@ -7,14 +7,17 @@ function VendingMachine(){
 	this.dispensedProducts = []
 	this.stockedProducts = {
 		"chips": {
+			name: 'chips',
 			price: 50,
 			display: 'PRICE $0.50'
 		},
 		"cola": {
+			name: 'cola',
 			price: 100,
 			display: 'PRICE $1.00'
 		},
 		"candy": {
+			name: 'candy',
 			price: 65,
 			display: 'PRICE $0.65'
 		}
@@ -65,6 +68,7 @@ VendingMachine.prototype.SelectProduct = function(productName){
 	var product = this.stockedProducts[productName]
 
 	if (this.currentValue >= product.price){
+		this.dispensedProducts.push(product.name)
 		this.status = 'THANK YOU'
 	}
 	else{
@@ -73,7 +77,9 @@ VendingMachine.prototype.SelectProduct = function(productName){
 }
 
 VendingMachine.prototype.GetDispensedProducts = function(){
-	return ['cola']
+	var returnValue = this.dispensedProducts
+	this.dispensedProducts = []
+	return returnValue
 }
 
 module.exports = VendingMachine
