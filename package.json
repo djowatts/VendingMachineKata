@@ -1,7 +1,7 @@
 {
-  "name": "give-them-code",
+  "name": "vending-machine-kata",
   "version": "0.0.1",
-  "description": "Back End Api for the GiveThemCodeProject",
+  "description": "Vending Machine Kata",
   "main": "src/app.js",
   "scripts": {
     "watch": "nodemon src/app.js",
@@ -9,8 +9,7 @@
   },
   "author": "David Watts",
   "license": "ISC",
-  "dependencies": {    
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.0.2",
