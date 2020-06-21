@@ -89,7 +89,14 @@ VendingMachine.prototype.SelectProduct = function(productName){
 	var product = this.stockedProducts[productName]
 
 	if (this.currentValue >= product.price){
+		if (product.quantity === 0){
+			this.status = 'SOLD OUT'
+			return
+		}
+
 		this.dispensedProducts.push(product.name)
+		product.quantity--
+		this.stockedProducts[productName] = product
 		this.status = 'THANK YOU'
 
 		var change = calculateChange(product.price, this.currentValue)
@@ -97,7 +104,7 @@ VendingMachine.prototype.SelectProduct = function(productName){
 		for (var i = change.length - 1; i >= 0; i--) {
 			this.returnedCoins.push(change[i])
 		}		
-		
+				
 	}
 	else{
 		this.status = product.display
