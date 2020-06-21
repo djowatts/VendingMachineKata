@@ -13,6 +13,9 @@ VendingMachine.prototype.InsertCoin = function(coinSize, coinWeight){
 	if (coinSize === 'nickelCoinSize' && coinWeight === 'nickelCoinWeight'){
 
 	}
+	else if (coinSize === 'dimeCoinSize' && coinWeight === 'dimeCoinWeight'){
+
+	}
 	else{
 		this.returnedCoins.push({coinSize, coinWeight})
 	}	
