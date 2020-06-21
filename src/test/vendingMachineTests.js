@@ -238,4 +238,31 @@ describe('vendingMachineTests', function(done){
 		assert(status === "SOLD OUT")
 		done()
 	})
+
+	it ('should display remaining value when sold out after the display refreshes from displaying the sold out status', function(done){
+		var vendingMachine = new VendingMachine()
+
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')	
+
+		vendingMachine['SelectProduct']('candy')
+
+
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')	
+
+		vendingMachine['SelectProduct']('candy')
+
+		var status = vendingMachine['GetStatus']()
+		var status = vendingMachine['GetStatus']()
+
+		assert(status === "$0.65")
+		done()
+
+		done()
+	})
 })
