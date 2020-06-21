@@ -214,4 +214,28 @@ describe('vendingMachineTests', function(done){
 
 		done()
 	})
+
+	it ('should display SOLD OUT if there is no stock left for a product', function(done){
+		var vendingMachine = new VendingMachine()
+
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')	
+
+		vendingMachine['SelectProduct']('candy')
+
+
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')
+		vendingMachine['InsertCoin']('quarterCoinSize', 'quarterCoinWeight')	
+		vendingMachine['InsertCoin']('dimeCoinSize', 'dimeCoinWeight')
+		vendingMachine['InsertCoin']('nickelCoinSize', 'nickelCoinWeight')	
+
+		vendingMachine['SelectProduct']('candy')
+
+		var status = vendingMachine['GetStatus']()
+
+		assert(status === "SOLD OUT")
+		done()
+	})
 })

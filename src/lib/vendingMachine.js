@@ -24,17 +24,20 @@ function VendingMachine(){
 		"chips": {
 			name: 'chips',
 			price: 50,
-			display: 'PRICE $0.50'
+			display: 'PRICE $0.50',
+			quantity: 3
 		},
 		"cola": {
 			name: 'cola',
 			price: 100,
-			display: 'PRICE $1.00'
+			display: 'PRICE $1.00',
+			quantity: 3
 		},
 		"candy": {
 			name: 'candy',
 			price: 65,
-			display: 'PRICE $0.65'
+			display: 'PRICE $0.65',
+			quantity: 1
 		}
 	}	
 }
