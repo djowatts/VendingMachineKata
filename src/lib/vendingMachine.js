@@ -8,8 +8,11 @@ function VendingMachine(){
 
 VendingMachine.prototype.GetStatus = function(){
 	var returnValue = this.status
-	if (this.status != 'INSERT COIN'){
+	if (this.status != 'INSERT COIN' && this.currentValue === 0){
 		this.status = 'INSERT COIN'
+	}
+	else {
+		this.status = '$' + (this.currentValue/100)
 	}
 	return returnValue
 }
