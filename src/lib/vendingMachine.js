@@ -64,11 +64,15 @@ VendingMachine.prototype.SelectProduct = function(productName){
 	
 	var product = this.stockedProducts[productName]
 
-	this.status = product.display
+	if (this.currentValue >= product.price){
+		this.status = 'THANK YOU'
+	}
+	else{
+		this.status = product.display
+	}
 }
 
 VendingMachine.prototype.GetDispensedProducts = function(){
-	this.status = 'THANK YOU'	
 	return ['cola']
 }
 
