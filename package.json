@@ -1,0 +1,19 @@
+{
+  "name": "give-them-code",
+  "version": "0.0.1",
+  "description": "Back End Api for the GiveThemCodeProject",
+  "main": "src/app.js",
+  "scripts": {
+    "watch": "nodemon src/app.js",
+    "test": "cd src/ && ../node_modules/.bin/mocha --reporter spec"
+  },
+  "author": "David Watts",
+  "license": "ISC",
+  "dependencies": {    
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2"
+  }
+}
